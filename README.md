@@ -64,7 +64,7 @@ Simular un entorno donde:
 
 1. **Clona este repositorio**  
 ```bash
-git clone <repo-url>
+git clone <https://github.com/juanpg10/bulkhead-demo.git>
 ```
 
 2. **Levanta los servicios**  
