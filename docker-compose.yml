@@ -1,0 +1,30 @@
+version: '3.8'
+
+services:
+  nginx:
+    image: nginx:alpine
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    ports:
+      - "8080:80"
+    depends_on:
+      - service-critical
+      - service-slow
+
+  service-critical:
+    build: ./service-critical
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 200M
+    restart: always
+
+  service-slow:
+    build: ./service-slow
+    deploy:
+      resources:
+        limits:
+          cpus: '0.2'
+          memory: 100M
+    restart: on-failure
